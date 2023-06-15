@@ -25,6 +25,10 @@ public class LineService {
             repository.findByContentContaining(content);
     }
 
+    public List<Line> findByFile(File file) {
+        return repository.findByFile(file);
+    }
+
     public Line save(Line line) {
         return repository.save(line);
     }
@@ -36,6 +40,10 @@ public class LineService {
         line.setLineNumber(number);
 
         return repository.save(line);
+    }
+
+    public void delete(Line line) {
+        repository.delete(line);
     }
 
     public void deleteAll() {

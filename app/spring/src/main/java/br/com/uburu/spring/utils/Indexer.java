@@ -83,5 +83,19 @@ public final class Indexer {
         final File folder = new File(path);
         index(folder);
     }
+
+    /**
+     * Deleta todos as linhas e os arquivos indexados
+     * @param String path
+     */
+    public void deleteIndex(final String path) {
+        var file = fileService.findByPath(path);
+
+        lineService.findByFile(file).forEach(e -> {
+            lineService.delete(e);
+        });
+
+        fileService.delete(file);
+    }
     
 }

@@ -50,6 +50,10 @@ public class FileService {
         return repository.save(file);
     }
 
+    public void delete(final File file) {
+        repository.delete(file);
+    }
+
     public void deleteAll() {
         repository.deleteAll();
     }
