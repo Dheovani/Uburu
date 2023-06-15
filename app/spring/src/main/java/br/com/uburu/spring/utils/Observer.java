@@ -25,22 +25,40 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import br.com.uburu.spring.service.IndexService;
+import jakarta.annotation.PostConstruct;
 
 import static java.nio.file.WatchEvent.Kind;
 
+@Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public final class Observer {
 
-    private static Observer observer;
+    private static volatile Observer observer;
+
+    @Autowired
     private Indexer indexer;
+
+    @Autowired
+    private IndexService indexService;
+
     private Map<WatchKey, Path> keyMap;
-    private final String ENTRY_CREATE = "ENTRY_CREATE";
-    private final String ENTRY_DELETE = "ENTRY_DELETE";
-    private final String ENTRY_MODIFY = "ENTRY_MODIFY";
     private static final Logger logger = LoggerFactory.getLogger(Indexer.class);
 
     private Observer() {
-        indexer = new Indexer();
         keyMap = new HashMap<>();
+    }
+
+    @PostConstruct
+    private void initialize() {
+        indexService.findAll().forEach(e -> {
+            add(e.getPath());
+        });
     }
 
     /**
@@ -59,15 +77,14 @@ public final class Observer {
                     final String absolutePath = eventDir.toFile().getAbsolutePath();
 
                     switch (kind.toString()) {
-                        case ENTRY_DELETE:
+                        case "ENTRY_DELETE":
                             indexer.deleteIndex(absolutePath);
                             break;
 
-                        case ENTRY_CREATE:
-                        case ENTRY_MODIFY:
+                        case "ENTRY_CREATE":
+                        case "ENTRY_MODIFY":
                             indexer.index(absolutePath);
                             break;
-
                     }
                 }
             } while (watchKey.reset());

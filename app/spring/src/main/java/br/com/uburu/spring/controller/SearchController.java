@@ -62,6 +62,9 @@ public class SearchController {
     @Autowired
     private FilterHelper helper;
 
+    @Autowired
+    private Observer observer;
+
     @GetMapping
     public ResponseEntity<List<Line>> getLines() {
         return new ResponseEntity<List<Line>>(lineService.findAll(), HttpStatus.OK);
@@ -90,7 +93,7 @@ public class SearchController {
     @PostMapping
     public ResponseEntity<?> index(@RequestBody Path path) {
         try {
-            Observer.getInstance().add(path.getPath());
+            observer.add(path.getPath());
             
             indexService.save(path.getPath());
             indexer.index(path.getPath());
