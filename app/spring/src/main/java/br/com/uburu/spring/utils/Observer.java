@@ -30,7 +30,7 @@ import static java.nio.file.WatchEvent.Kind;
 
 public final class Observer {
 
-    private Observer observer;
+    private static Observer observer;
     private Indexer indexer;
     private Map<WatchKey, Path> keyMap;
     private final String ENTRY_CREATE = "ENTRY_CREATE";
@@ -109,7 +109,7 @@ public final class Observer {
      * Retorna instância do observer
      * @return Observer
      */
-    public Observer getInstance() {
+    public static Observer getInstance() {
         if (observer == null) {
             observer = new Observer();
         }

@@ -34,6 +34,7 @@ import br.com.uburu.spring.service.FileService;
 import br.com.uburu.spring.service.IndexService;
 import br.com.uburu.spring.service.LineService;
 import br.com.uburu.spring.utils.Indexer;
+import br.com.uburu.spring.utils.Observer;
 import br.com.uburu.spring.utils.RequestParams;
 import br.com.uburu.spring.utils.FilterHelper;
 
@@ -89,6 +90,8 @@ public class SearchController {
     @PostMapping
     public ResponseEntity<?> index(@RequestBody Path path) {
         try {
+            Observer.getInstance().add(path.getPath());
+            
             indexService.save(path.getPath());
             indexer.index(path.getPath());
             return ResponseEntity.accepted().build();
