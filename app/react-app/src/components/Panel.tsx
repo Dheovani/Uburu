@@ -14,9 +14,14 @@ export interface Line {
 
 export const Panel = (props: any): JSX.Element => {
     const [content, setContent] = useState([]);
+    const defaultMsg: string = "Nenhum item encontrado.";
 
     const formatLines = (lines: Line[]): any[] => {
         const obj: { [key: string]: any } = {};
+
+        if (!lines.length) {
+            return [{ path: defaultMsg }];
+        }
       
         for (const line of lines) {
             const key = line.file.path;
@@ -42,6 +47,8 @@ export const Panel = (props: any): JSX.Element => {
     useEffect(() => { setContent([]); }, [props.fields]);
 
     const getName = (path: string): string | undefined => {
+        if (path === defaultMsg) return path;
+
         const arr = path.split("\\");
         return (`...\\${arr.slice(-3).join("\\")}`);
     };
@@ -52,7 +59,7 @@ export const Panel = (props: any): JSX.Element => {
                 {
                     !props.disabled && list.map((item: any, index: number) => {
                         return (
-                            <p key={index} onClick={() => setContent(item.line)}>{getName(item.path)}</p>
+                            <p key={index} onClick={() => setContent(item.line || [])}>{getName(item.path)}</p>
                         )
                     })
                 }

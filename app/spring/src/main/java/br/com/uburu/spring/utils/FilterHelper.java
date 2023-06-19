@@ -110,7 +110,7 @@ public final class FilterHelper {
         for (final String filter : filterEntity.getFilter().replaceAll("\\s","").split(";")) {
             for (final Line line : lines) {
                 final String ext = getExtension(line.getFile().getPath()).orElse(null);
-                if (!ext.contains(filter)) {
+                if (ext == null || !ext.equals(filter)) {
                     linesToRemove.add(line);
                 }
             }

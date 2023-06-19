@@ -23,8 +23,6 @@ import java.nio.file.WatchService;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -48,7 +46,6 @@ public final class Observer {
     private IndexService indexService;
 
     private Map<WatchKey, Path> keyMap;
-    private static final Logger logger = LoggerFactory.getLogger(Indexer.class);
 
     private Observer() {
         keyMap = new HashMap<>();
@@ -89,7 +86,7 @@ public final class Observer {
                 }
             } while (watchKey.reset());
         } catch (final IOException | InterruptedException e) {
-            logger.error(e.getMessage(), e);
+            e.printStackTrace();
         }
     }
 
@@ -109,7 +106,7 @@ public final class Observer {
 
             keyMap.put(key, path);
         } catch (final IOException e) {
-            logger.error(e.getMessage(), e);
+            e.printStackTrace();
         }
     }
 
