@@ -1,0 +1,50 @@
+.index {
+	color: white;
+	width: 20%;
+	float: right;
+	padding: 0 5%;
+	margin: 0;
+	border: none;
+	border-radius: 5px;
+}
+
+.index h2 {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.index div {
+	background-color: rgb(53, 53, 53);
+	border: 1px solid black;
+	border-radius: 5px;
+	width: 100%;
+	height: 150px;
+	overflow-y: scroll;
+	overflow: hidden;
+}
+
+.index div p {
+	padding: 0 3%;
+	font-size: small;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-shadow: 0.5px 0.5px 1px black;
+}
+
+.index::-webkit-scrollbar {
+	display: none;
+}
+
+.index-button {
+	background-color: rgb(53, 53, 53);
+	color: white;
+	float: left;
+	display: flex;
+	margin: 1% 2% 0 0;
+	padding: 5px 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
