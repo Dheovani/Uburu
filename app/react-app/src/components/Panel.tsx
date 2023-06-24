@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./panel.css";
+import "./styles/panel.css";
 
 export interface Line {
 	id?: number;

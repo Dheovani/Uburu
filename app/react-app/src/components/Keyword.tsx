@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiBroom } from "react-icons/gi";
-import { DeleteMethod, GetMethod } from "../../utils/RestMethods";
+import { DeleteMethod, GetMethod } from "../utils/RestMethods";
 import { toast } from "react-toastify";
-import { Tooltip } from "../Tooltip/Tooltip";
+import { Tooltip } from "../utils/Tooltip";
 
 export interface Keyword {
 	keyword: string;

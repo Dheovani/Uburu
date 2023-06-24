@@ -1,6 +1,6 @@
 import { Tooltip as MuiTooltip, IconButton } from "@mui/material";
 import { MdOutlineInfo } from 'react-icons/md';
-import './tooltip.css';
+import './styles/tooltip.css';
 
 interface Props {
     info: string;

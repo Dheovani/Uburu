@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Panel, Line } from "./components/Panel/Panel";
+import { Panel, Line } from "./components/Panel";
 import { PostMethod } from "./utils/RestMethods";
-import { Path, PathInput } from "./utils/Path";
-import { Filter, FilterInput } from "./utils/Filter";
-import { Keyword, KeywordInput } from "./components/Keyword/Keyword";
-import { ToastContainer, toast } from "react-toastify";
-import "./App.css";
-import "react-toastify/dist/ReactToastify.css";
+import { Path, PathInput } from "./components/Path";
+import { Filter, FilterInput } from "./components/Filter";
+import { Keyword, KeywordInput } from "./components/Keyword";
 import { Index } from "./components/Index";
+import { ToastContainer, toast } from "react-toastify";
+import "./styles/App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export const App = (): JSX.Element => {
 	const [path, setPath] = useState<Path>({ path: "", date: new Date() });

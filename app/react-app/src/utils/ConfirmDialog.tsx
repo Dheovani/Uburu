@@ -1,4 +1,4 @@
-import "./confirmDialog.css";
+import "./styles/confirmDialog.css";
 
 export const ConfirmDialog = (props: any): JSX.Element => {
 	const handleClick = (del: boolean) => {

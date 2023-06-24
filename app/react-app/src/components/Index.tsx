@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Tooltip } from "./Tooltip/Tooltip";
+import { Tooltip } from "../utils/Tooltip";
 import { DeleteMethod, GetMethod, PostMethod } from "../utils/RestMethods";
-import ConfirmDialog from "./ConfirmDialog/ConfirmDialog";
-import "./index.css";
+import ConfirmDialog from "../utils/ConfirmDialog";
+import "./styles/index.css";
 
 interface IndexInterface {
 	id?: number;

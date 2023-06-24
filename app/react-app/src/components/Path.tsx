@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { GiBroom } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdBrowserUpdated } from "react-icons/md";
-import { DeleteMethod, GetMethod } from "./RestMethods";
+import { DeleteMethod, GetMethod } from "../utils/RestMethods";
 import { toast } from "react-toastify";
-import { Tooltip } from "../components/Tooltip/Tooltip";
+import { Tooltip } from "../utils/Tooltip";
 
 export interface Path {
 	path: string;
